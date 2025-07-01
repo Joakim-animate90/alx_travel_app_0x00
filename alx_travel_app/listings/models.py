@@ -1,9 +1,10 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 import uuid
 
 
-class User(AbstractUser):
+class CustomUser(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(unique=True)
     is_host = models.BooleanField(default=False)  # for listing creators
@@ -24,7 +25,7 @@ class Listing(models.Model):
     location = models.CharField(max_length=100)
     price_per_night = models.FloatField()
     max_guests = models.IntegerField()
-    host = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='listings')
+    host = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='listings')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -35,7 +36,7 @@ class Listing(models.Model):
 class Booking(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name='bookings')
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='bookings')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='bookings')
     check_in_date = models.DateField()
     check_out_date = models.DateField()
     guests = models.PositiveIntegerField()
@@ -56,7 +57,7 @@ class Booking(models.Model):
 class Review(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name='reviews')
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='reviews')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')
     rating = models.PositiveSmallIntegerField()  # 1 to 5
     comment = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

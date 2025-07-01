@@ -1,12 +1,5 @@
 from django.core.management.base import BaseCommand
-import sys
-print("Python path:", sys.path)
-print("Current directory:", os.getcwd())
-try:
-    from listings.models import Listing, User
-except ImportError as e:
-    print("Import error:", e)
-    raise
+from alx_travel_app.listings.models import Listing, CustomUser
 import random
 from faker import Faker
 
@@ -17,7 +10,7 @@ class Command(BaseCommand):
         fake = Faker()
         
         # Create a host user if none exists
-        host, created = User.objects.get_or_create(
+        host, created = CustomUser.objects.get_or_create(
             email='host@example.com',
             defaults={
                 'username': 'host',

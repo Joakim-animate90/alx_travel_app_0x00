@@ -8,3 +8,4 @@ drf-yasg==1.21.10           # Swagger for API documentation
 django-environ==0.10.0     # Manage environment variables
 redis==5.0.1               # Redis for Celery result backend (optional)
 setuptools<81
+Faker==24.11.0
