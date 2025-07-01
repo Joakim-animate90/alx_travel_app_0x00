@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-m8=um@56gl7qacxnm1%@0xi851bki6ih14)rg^s%k4=%)_f)+_
 DEBUG = True
 
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL = "listings.CustomUser"
+AUTH_USER_MODEL = "listings.CustomUser" 
 
 
 # Application definition

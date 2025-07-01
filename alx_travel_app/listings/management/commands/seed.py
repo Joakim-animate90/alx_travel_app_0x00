@@ -36,7 +36,7 @@ class Command(BaseCommand):
         
         # Sample property types
         property_types = [
-            'Beachfront Villa',
+            'Beachfront Villa',     
             'Mountain Cabin',
             'City Apartment',
             'Safari Lodge',
@@ -45,7 +45,7 @@ class Command(BaseCommand):
             'Countryside Cottage',
             'Treehouse Retreat',
             'Boutique Hotel',
-            'Private Island'
+            'Private Island',    
         ]
         
         # Create sample listings
