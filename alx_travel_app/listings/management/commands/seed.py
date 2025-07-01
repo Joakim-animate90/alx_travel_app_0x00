@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from alx_travel_app.listings.models import Listing, CustomUser
+from listings.models import Listing, CustomUser
 import random
 from faker import Faker
 

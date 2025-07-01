@@ -29,4 +29,4 @@ media/
 .venv/
 .qodo/
 .idea/
-env/
+myenv/
